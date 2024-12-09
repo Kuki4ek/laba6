@@ -1,0 +1,10 @@
+Ivanov Ivan
+A123BC
+Sedan
+Toyota
+1,000000
+140,000000
+15.06.2023
+25000,000000
+type
+true
