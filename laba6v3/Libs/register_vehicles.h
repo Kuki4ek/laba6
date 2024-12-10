@@ -26,8 +26,15 @@ public:
 	void DisplayAll();
 	void DisplayById(int id_vehicle);
 	void DeleteVehicleById(int id_vehicle);
-	void SetList(Vehicle* v);
-	Vehicle* GetList();
+
+	void SetListVehicle(Vehicle* v);
+	void SetListCar(Car* v);
+	void SetListMotorcycle(Motorcycle* v);
+
+	Vehicle* GetListVehicle();
+	Car* GetListCar();
+	Motorcycle* GetListMotocycle();
+
 	void Task1();
 	void Task2();
 	void SetNumVehicles(int num);

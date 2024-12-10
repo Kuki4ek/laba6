@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
         switch (operation)
         {
         case 1:
-            Vehicles.SetList(UserInput(&count, MAX_VEHICLE_COUNT));
+            Vehicles.SetListVehicle(UserInput(&count, MAX_VEHICLE_COUNT));
             Vehicles.SetNumVehicles(count);
             break;
         case 2:

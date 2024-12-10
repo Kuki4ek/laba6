@@ -302,7 +302,7 @@ void RegisterVehicles::DeleteVehicleById(int id_vehicle) {
 				cars[i] = cars[i + 1];
 			}
 			Car v1;
-			list[num_cars] = v1;
+			cars[num_cars] = v1;
 			num_cars--;
 		}
 		else if (id_vehicle < num_vehicles + num_cars + num_motorcycles) {
@@ -310,17 +310,31 @@ void RegisterVehicles::DeleteVehicleById(int id_vehicle) {
 				motorcycles[i] = motorcycles[i + 1];
 			}
 			Motorcycle v2;
-			list[num_motorcycles] = v2;
+			motorcycles[num_motorcycles] = v2;
 			num_motorcycles--;
 		}
 	}
 }
-void RegisterVehicles::SetList(Vehicle* v) {
+void RegisterVehicles::SetListVehicle(Vehicle* v) {
 	list = v;
 }
-Vehicle* RegisterVehicles::GetList() {
+void RegisterVehicles::SetListCar(Car* v) {
+	cars = v;
+}
+void RegisterVehicles::SetListMotorcycle(Motorcycle* v) {
+	motorcycles = v;
+}
+
+Vehicle* RegisterVehicles::GetListVehicle() {
 	return list;
 }
+Car* RegisterVehicles::GetListCar() {
+	return cars;
+}
+Motorcycle* RegisterVehicles::GetListMotocycle() {
+	return motorcycles;
+}
+
 void RegisterVehicles::Task1() {
 	bool flag = false;
 	for (int i = 0; i < num_vehicles; i++) {
@@ -330,7 +344,27 @@ void RegisterVehicles::Task1() {
 				cout << setw(INDENTATION) << "id" << setw(INDENTATION) << "Регистрационный номер" << endl;
 			}
 			flag = true;
-			cout << setw(INDENTATION) << i << setw(INDENTATION) << list[i].getVehicleRegNumber();
+			cout << setw(INDENTATION) << i << setw(INDENTATION) << list[i].getVehicleRegNumber() << endl;
+		}
+	}
+	for (int i = 0; i < num_cars; i++) {
+		if (cars[i].task_1()) {
+			if (!flag) {
+				cout << "Номера автомобилей с пробегом свыше 100тыс. КМ" << endl;
+				cout << setw(INDENTATION) << "id" << setw(INDENTATION) << "Регистрационный номер" << endl;
+			}
+			flag = true;
+			cout << setw(INDENTATION) << i+num_vehicles << setw(INDENTATION) << cars[i].getVehicleRegNumber() << endl;
+		}
+	}
+	for (int i = 0; i < num_motorcycles; i++) {
+		if (motorcycles[i].task_1()) {
+			if (!flag) {
+				cout << "Номера автомобилей с пробегом свыше 100тыс. КМ" << endl;
+				cout << setw(INDENTATION) << "id" << setw(INDENTATION) << "Регистрационный номер" << endl;
+			}
+			flag = true;
+			cout << setw(INDENTATION) << i + num_vehicles + num_cars << setw(INDENTATION) << motorcycles[i].getVehicleRegNumber() << endl;
 		}
 	}
 	if (!flag) cout << "Автомобилей с пробегом свыше 100тыс. КМ нет." << endl;
